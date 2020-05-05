@@ -2,9 +2,10 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
+const path = require('path');
 
 //serving static file
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'build')));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))

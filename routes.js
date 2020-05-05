@@ -38,14 +38,12 @@ module.exports = (app) => {
     });
 
     app.get('/getDeployments', (req, res) => {
-        console.log("get deployment");
         var output = {};
         Deployment.find({ status: true })
             .then(data => {
                 if (data !== '') {
                     Template.find({})
                         .then(templateData => {
-                            console.log("templateData", templateData);
                             output = { deploymentdetails: data, templateDetails: templateData };
                             res.send(output);
                         });
@@ -54,7 +52,6 @@ module.exports = (app) => {
     });
 
     app.post('/addDeployment', (req, res) => {
-        console.log("add deployment", req.body);
         var output = {};
         if (req.body.templateName === '') {
             output = { status: 2, msg: "Template name not found!" };
@@ -92,7 +89,6 @@ module.exports = (app) => {
     });
 
     app.get('/deleteDeployment/:deploymentid', (req, res) => {
-        console.log("delete deployment");
         var output = {};
         if (req.params.deploymentid !== '') {
             Deployment.updateOne({ _id: req.params.deploymentid }, {
