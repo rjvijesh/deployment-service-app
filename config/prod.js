@@ -1,4 +1,4 @@
 module.exports = {
     mongourl: process.env.MONGOURL,
-    domain: 'https://vijesh-my-wish-list.herokuapp.com/',
+    domain: 'https://vijesh-deployment-app.herokuapp.com/',
 }
